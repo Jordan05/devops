@@ -28,5 +28,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            # Este tag ahora usa tu usuario 'Jordan05'
             ghcr.io/jordan05/jordanimg:latest
