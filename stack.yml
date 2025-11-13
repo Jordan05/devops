@@ -16,7 +16,7 @@ services:
         - "traefik.http.routers.holaflask-secure.tls=true"
         - "traefik.http.routers.holaflask-secure.tls.certresolver=http"
         - "traefik.http.routers.holaflask-secure.service=holaflask"
-        - "traefik.http.services.holaflask.loadbalancer.server.port=5000"
+        - "traefik.http.services.holaflask.loadbalancer.server.port=80"
         - "traefik.docker.network=traefik-public"
     networks: 
       - traefik-public
