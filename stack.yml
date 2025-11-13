@@ -2,13 +2,13 @@ version: '3.9'
 
 services:
   holaflask:
-    image: holaflask:latest  # indica la imagen a usar
+    image: ghcr.io/Jordan05/jordanimg:latest  # Imagen desde GHCR
     deploy:
       replicas: 1
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.holaflask.entrypoints=http"
-        - "traefik.http.routers.hoaflask.rule=Host(`holaflask.byronrm.com`)"
+        - "traefik.http.routers.holaflask.rule=Host(`holaflask.byronrm.com`)"
         - "traefik.http.middlewares.holaflask-https-redirect.redirectscheme.scheme=https"
         - "traefik.http.routers.holaflask.middlewares=holaflask-https-redirect"
         - "traefik.http.routers.holaflask-secure.entrypoints=https"
@@ -20,6 +20,9 @@ services:
         - "traefik.docker.network=traefik-public"
     networks: 
       - traefik-public
+    # Para autenticar con GHCR
+    imagePullSecrets:
+      - ghcr-secret
 
 networks:
   traefik-public:
